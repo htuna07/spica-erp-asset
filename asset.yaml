@@ -1,0 +1,662 @@
+# BUCKET - Department
+apiVersion: bucket/v1
+kind: Schema
+metadata:
+  name: department-bucket
+spec:
+  title: Department
+  description: Describe your new bucket
+  icon: view_stream
+  primary: name
+  readOnly: false
+  history: false
+  properties:
+    name:
+      type: string
+      title: name
+      description: Description of the name input
+      options:
+        position: bottom
+    address:
+      type: textarea
+      title: address
+      description: Description of the address input
+      options:
+        position: bottom
+  acl:
+    write: true==true
+    read: true==true
+  order: 0
+---
+# BUCKET - Employee
+apiVersion: bucket/v1
+kind: Schema
+metadata:
+  name: employee-bucket
+spec:
+  title: Employee
+  description: Describe your new bucket
+  icon: view_stream
+  primary: name
+  readOnly: false
+  history: false
+  properties:
+    name:
+      type: string
+      title: name
+      description: Description of the name input
+      options:
+        position: bottom
+    surname:
+      type: string
+      title: surname
+      description: Description of the surname input
+      options:
+        position: bottom
+    role:
+      type: string
+      title: role
+      description: Description of the role input
+      options:
+        position: bottom
+      enum:
+        - developer
+        - manager
+        - leader
+    salary:
+      type: number
+      title: salary
+      description: Salary per hour
+      options:
+        position: bottom
+  acl:
+    write: true==true
+    read: true==true
+  order: 1
+---
+# BUCKET - Work
+apiVersion: bucket/v1
+kind: Schema
+metadata:
+  name: work-bucket
+spec:
+  title: Work
+  description: Describe your new bucket
+  icon: view_stream
+  primary: name
+  readOnly: false
+  history: false
+  properties:
+    name:
+      type: string
+      title: name
+      description: Description of the name input
+      options:
+        position: bottom
+    status:
+      type: string
+      title: status
+      description: |-
+        -1 = Failed
+        0 = Pending
+        1 = Accepted
+        2 = Completed
+      options:
+        position: bottom
+      pattern: ""
+      enum:
+        - "-1"
+        - "0"
+        - "1"
+        - "2"
+    income:
+      type: number
+      title: income
+      description: Description of the income input
+      options:
+        position: bottom
+      minimum: 0
+    costs:
+      type: array
+      title: costs
+      description: Description of the costs input
+      options:
+        position: bottom
+      items:
+        title: Title of the items
+        type: object
+        properties:
+          material_id:
+            type: string
+            title: material_id
+            description: Description of the material_id input
+            options:
+              position: bottom
+          name:
+            type: string
+            title: name
+            description: Description of the name input
+            options:
+              position: bottom
+          unit:
+            type: string
+            title: unit
+            description: Description of the unit input
+            options:
+              position: bottom
+          amount:
+            type: number
+            title: amount
+            description: Description of the amount input
+            options:
+              position: bottom
+          price:
+            type: number
+            title: price
+            description: Description of the price input
+            options:
+              position: bottom
+            minimum: 0
+    estimated_started_at:
+      type: date
+      title: estimated_started_at
+      description: Description of the estimated_started_at input
+      options:
+        position: bottom
+    estimated_completed_at:
+      type: date
+      title: estimated_completed_at
+      description: Description of the estimated_completed_at input
+      options:
+        position: bottom
+    started_at:
+      type: date
+      title: started_at
+      description: Description of the started_at input
+      options:
+        position: bottom
+    completed_at:
+      type: date
+      title: completed_at
+      description: Description of the completed_at input
+      options:
+        position: bottom
+    priority:
+      type: number
+      title: priority
+      description: Description of the priority input
+      options:
+        position: bottom
+      enum:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+  acl:
+    write: true==true
+    read: true==true
+  order: 2
+---
+# BUCKET - Receipt
+apiVersion: bucket/v1
+kind: Schema
+metadata:
+  name: receipt-bucket
+spec:
+  title: Receipt
+  description: Describe your new bucket
+  icon: view_stream
+  primary: name
+  readOnly: false
+  history: false
+  properties:
+    name:
+      type: string
+      title: name
+      description: Description of the name input
+      options:
+        position: bottom
+    created_at:
+      type: date
+      title: created_at
+      description: Description of the created_at input
+      options:
+        position: bottom
+      default: :created_at
+  acl:
+    write: true==true
+    read: true==true
+  order: 4
+---
+# BUCKET - Department
+apiVersion: bucket/v1
+kind: Schema
+metadata:
+  name: department-bucket
+spec:
+  title: Department
+  description: Describe your new bucket
+  icon: view_stream
+  primary: name
+  readOnly: false
+  history: false
+  properties:
+    name:
+      type: string
+      title: name
+      description: Description of the name input
+      options:
+        position: bottom
+    employees:
+      type: relation
+      title: employees
+      description: Description of the employees input
+      options:
+        position: bottom
+      relationType: onetomany
+      dependent: false
+      bucket:
+        resourceFieldRef:
+          schemaName: employee-bucket
+    address:
+      type: textarea
+      title: address
+      description: Description of the address input
+      options:
+        position: bottom
+  acl:
+    write: true==true
+    read: true==true
+  order: 0
+---
+# BUCKET - Employee
+apiVersion: bucket/v1
+kind: Schema
+metadata:
+  name: employee-bucket
+spec:
+  title: Employee
+  description: Describe your new bucket
+  icon: view_stream
+  primary: name
+  readOnly: false
+  history: false
+  properties:
+    name:
+      type: string
+      title: name
+      description: Description of the name input
+      options:
+        position: bottom
+    surname:
+      type: string
+      title: surname
+      description: Description of the surname input
+      options:
+        position: bottom
+    role:
+      type: string
+      title: role
+      description: Description of the role input
+      options:
+        position: bottom
+      enum:
+        - developer
+        - manager
+        - leader
+    department:
+      type: relation
+      title: department
+      description: Description of the department input
+      options:
+        position: bottom
+      relationType: onetoone
+      dependent: false
+      bucket:
+        resourceFieldRef:
+          schemaName: department-bucket
+    works:
+      type: relation
+      title: works
+      description: Description of the works input
+      options:
+        position: bottom
+      relationType: onetomany
+      dependent: false
+      bucket:
+        resourceFieldRef:
+          schemaName: work-bucket
+    salary:
+      type: number
+      title: salary
+      description: Salary per hour
+      options:
+        position: bottom
+  acl:
+    write: true==true
+    read: true==true
+  order: 1
+---
+# BUCKET - Work
+apiVersion: bucket/v1
+kind: Schema
+metadata:
+  name: work-bucket
+spec:
+  title: Work
+  description: Describe your new bucket
+  icon: view_stream
+  primary: name
+  readOnly: false
+  history: false
+  properties:
+    name:
+      type: string
+      title: name
+      description: Description of the name input
+      options:
+        position: bottom
+    employees:
+      type: relation
+      title: employees
+      description: Description of the employees input
+      options:
+        position: bottom
+      relationType: onetomany
+      dependent: false
+      bucket:
+        resourceFieldRef:
+          schemaName: employee-bucket
+    client:
+      type: relation
+      title: client
+      description: Description of the client input
+      options:
+        position: bottom
+      relationType: onetoone
+      dependent: false
+      bucket:
+        resourceFieldRef:
+          schemaName: client-bucket
+    status:
+      type: string
+      title: status
+      description: |-
+        -1 = Failed
+        0 = Pending
+        1 = Accepted
+        2 = Completed
+      options:
+        position: bottom
+      pattern: ""
+      enum:
+        - "-1"
+        - "0"
+        - "1"
+        - "2"
+    income:
+      type: number
+      title: income
+      description: Description of the income input
+      options:
+        position: bottom
+      minimum: 0
+    receipt:
+      type: relation
+      title: receipt
+      description: Description of the receipt input
+      options:
+        position: bottom
+      relationType: onetoone
+      dependent: false
+      bucket:
+        resourceFieldRef:
+          schemaName: receipt-bucket
+    costs:
+      type: array
+      title: costs
+      description: Description of the costs input
+      options:
+        position: bottom
+      items:
+        title: Title of the items
+        type: object
+        properties:
+          material_id:
+            type: string
+            title: material_id
+            description: Description of the material_id input
+            options:
+              position: bottom
+          name:
+            type: string
+            title: name
+            description: Description of the name input
+            options:
+              position: bottom
+          unit:
+            type: string
+            title: unit
+            description: Description of the unit input
+            options:
+              position: bottom
+          amount:
+            type: number
+            title: amount
+            description: Description of the amount input
+            options:
+              position: bottom
+          price:
+            type: number
+            title: price
+            description: Description of the price input
+            options:
+              position: bottom
+            minimum: 0
+    estimated_started_at:
+      type: date
+      title: estimated_started_at
+      description: Description of the estimated_started_at input
+      options:
+        position: bottom
+    estimated_completed_at:
+      type: date
+      title: estimated_completed_at
+      description: Description of the estimated_completed_at input
+      options:
+        position: bottom
+    started_at:
+      type: date
+      title: started_at
+      description: Description of the started_at input
+      options:
+        position: bottom
+    completed_at:
+      type: date
+      title: completed_at
+      description: Description of the completed_at input
+      options:
+        position: bottom
+    priority:
+      type: number
+      title: priority
+      description: Description of the priority input
+      options:
+        position: bottom
+      enum:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+  acl:
+    write: true==true
+    read: true==true
+  order: 2
+---
+# BUCKET - Client
+apiVersion: bucket/v1
+kind: Schema
+metadata:
+  name: client-bucket
+spec:
+  title: Client
+  description: Describe your new bucket
+  icon: view_stream
+  primary: name
+  readOnly: false
+  history: false
+  properties:
+    name:
+      type: string
+      title: name
+      description: Description of the name input
+      options:
+        position: bottom
+    surname:
+      type: string
+      title: surname
+      description: Description of the surname input
+      options:
+        position: bottom
+    company:
+      type: string
+      title: company
+      description: Description of the company input
+      options:
+        position: bottom
+  acl:
+    write: true==true
+    read: true==true
+  order: 3
+---
+# BUCKET - Receipt
+apiVersion: bucket/v1
+kind: Schema
+metadata:
+  name: receipt-bucket
+spec:
+  title: Receipt
+  description: Describe your new bucket
+  icon: view_stream
+  primary: name
+  readOnly: false
+  history: false
+  properties:
+    name:
+      type: string
+      title: name
+      description: Description of the name input
+      options:
+        position: bottom
+    client:
+      type: relation
+      title: client
+      description: Description of the client input
+      options:
+        position: bottom
+      relationType: onetoone
+      dependent: false
+      bucket:
+        resourceFieldRef:
+          schemaName: client-bucket
+    works:
+      type: relation
+      title: works
+      description: Description of the works input
+      options:
+        position: bottom
+      relationType: onetomany
+      dependent: false
+      bucket:
+        resourceFieldRef:
+          schemaName: work-bucket
+    created_at:
+      type: date
+      title: created_at
+      description: Description of the created_at input
+      options:
+        position: bottom
+      default: :created_at
+  acl:
+    write: true==true
+    read: true==true
+  order: 4
+---
+# BUCKET - Material
+apiVersion: bucket/v1
+kind: Schema
+metadata:
+  name: material-bucket
+spec:
+  title: Material
+  description: Describe your new bucket
+  icon: view_stream
+  primary: name
+  readOnly: false
+  history: false
+  properties:
+    name:
+      type: string
+      title: name
+      description: Description of the name input
+      options:
+        position: bottom
+    remains:
+      type: number
+      title: remains
+      description: Description of the remains input
+      options:
+        position: bottom
+      minimum: 0
+    unit:
+      type: string
+      title: unit
+      description: Description of the unit input
+      options:
+        position: bottom
+    price:
+      type: number
+      title: price
+      description: Description of the price input
+      options:
+        position: bottom
+      minimum: 0
+  acl:
+    write: true==true
+    read: true==true
+  order: 5
+---
+# FUNCTION - enterprise resource planning
+apiVersion: function/v1
+kind: Function
+metadata:
+  name: enterprise-resource-planning-function
+spec:
+  language: javascript
+  timeout: 12
+  dependency:
+    - name: "@spica-devkit/bucket"
+      version: ^0.9.11
+  title: enterprise resource planning
+  code: ./function/enterprise-resource-planning-function.js
+  runtime:
+    name: Node
+    language: Javascript
+---
+# TRIGGER - onWorkInsert
+apiVersion: function/v1
+kind: Trigger
+metadata:
+  name: onWorkInsert
+spec:
+  type: bucket
+  active: true
+  name: onWorkInsert
+  func: enterprise-resource-planning-function
+  bucketOptions:
+    bucket:
+      resourceFieldRef:
+        schemaName: work-bucket
+    type: INSERT
