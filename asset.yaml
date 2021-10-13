@@ -6,7 +6,7 @@ metadata:
 spec:
   title: Department
   description: Describe your new bucket
-  icon: view_stream
+  icon: groups
   primary: name
   readOnly: false
   history: false
@@ -36,7 +36,7 @@ metadata:
 spec:
   title: Employee
   description: Describe your new bucket
-  icon: view_stream
+  icon: badge
   primary: name
   readOnly: false
   history: false
@@ -82,7 +82,7 @@ metadata:
 spec:
   title: Work
   description: Describe your new bucket
-  icon: view_stream
+  icon: work
   primary: name
   readOnly: false
   history: false
@@ -206,7 +206,7 @@ metadata:
 spec:
   title: Receipt
   description: Describe your new bucket
-  icon: view_stream
+  icon: receipt
   primary: name
   readOnly: false
   history: false
@@ -237,7 +237,7 @@ metadata:
 spec:
   title: Department
   description: Describe your new bucket
-  icon: view_stream
+  icon: groups
   primary: name
   readOnly: false
   history: false
@@ -278,7 +278,7 @@ metadata:
 spec:
   title: Employee
   description: Describe your new bucket
-  icon: view_stream
+  icon: badge
   primary: name
   readOnly: false
   history: false
@@ -346,7 +346,7 @@ metadata:
 spec:
   title: Work
   description: Describe your new bucket
-  icon: view_stream
+  icon: work
   primary: name
   readOnly: false
   history: false
@@ -503,7 +503,7 @@ metadata:
 spec:
   title: Client
   description: Describe your new bucket
-  icon: view_stream
+  icon: contacts
   primary: name
   readOnly: false
   history: false
@@ -539,7 +539,7 @@ metadata:
 spec:
   title: Receipt
   description: Describe your new bucket
-  icon: view_stream
+  icon: receipt
   primary: name
   readOnly: false
   history: false
@@ -592,7 +592,7 @@ metadata:
 spec:
   title: Material
   description: Describe your new bucket
-  icon: view_stream
+  icon: inventory_2
   primary: name
   readOnly: false
   history: false
