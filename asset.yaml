@@ -74,13 +74,13 @@ spec:
     read: true==true
   order: 1
 ---
-# BUCKET - Work
+# BUCKET - Task
 apiVersion: bucket/v1
 kind: Schema
 metadata:
-  name: work-bucket
+  name: task-bucket
 spec:
-  title: Work
+  title: Task
   description: Describe your new bucket
   icon: work
   primary: name
@@ -316,17 +316,17 @@ spec:
       bucket:
         resourceFieldRef:
           schemaName: department-bucket
-    works:
+    tasks:
       type: relation
-      title: works
-      description: Description of the works input
+      title: Tasks
+      description: Description of the tasks input
       options:
         position: bottom
       relationType: onetomany
       dependent: false
       bucket:
         resourceFieldRef:
-          schemaName: work-bucket
+          schemaName: task-bucket
     salary:
       type: number
       title: salary
@@ -338,13 +338,13 @@ spec:
     read: true==true
   order: 1
 ---
-# BUCKET - Work
+# BUCKET - Task
 apiVersion: bucket/v1
 kind: Schema
 metadata:
-  name: work-bucket
+  name: task-bucket
 spec:
-  title: Work
+  title: Task
   description: Describe your new bucket
   icon: work
   primary: name
@@ -561,17 +561,17 @@ spec:
       bucket:
         resourceFieldRef:
           schemaName: client-bucket
-    works:
+    tasks:
       type: relation
-      title: works
-      description: Description of the works input
+      title: tasks
+      description: Description of the tasks input
       options:
         position: bottom
       relationType: onetomany
       dependent: false
       bucket:
         resourceFieldRef:
-          schemaName: work-bucket
+          schemaName: task-bucket
     created_at:
       type: date
       title: created_at
@@ -645,18 +645,18 @@ spec:
     name: Node
     language: Javascript
 ---
-# TRIGGER - onWorkInsert
+# TRIGGER - onTaskInsert
 apiVersion: function/v1
 kind: Trigger
 metadata:
-  name: onWorkInsert
+  name: onTaskInsert
 spec:
   type: bucket
   active: true
-  name: onWorkInsert
+  name: onTaskInsert
   func: enterprise-resource-planning-function
   bucketOptions:
     bucket:
       resourceFieldRef:
-        schemaName: work-bucket
+        schemaName: task-bucket
     type: INSERT
